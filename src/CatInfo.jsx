@@ -6,8 +6,9 @@ import "./style/CatInfo.css";
 // handleAddToCart passes onAddToCart function that sets the cartData to array of 3 elements(name, price, breed)
 
 const CatInfo = ({ data,handleAddToCart,cartData }) => {
-    
+    const navigate = useNavigate();//new
     const location = useLocation(); //new
+    if (data===null || data===undefined || data.length===0) return  <h1> sorry no cats left</h1>
     let catName="";
     let price=""
     const getSelectedCatId = () => {
@@ -29,7 +30,7 @@ const CatInfo = ({ data,handleAddToCart,cartData }) => {
         return id;
     }//end of getSelectedCatId()
 
-    const navigate = useNavigate();//new
+    
 
     const handleClick = () => {
       console.log("catinfo: home btn clicked", cat.id);
@@ -42,7 +43,15 @@ const CatInfo = ({ data,handleAddToCart,cartData }) => {
 
     const cat = data.filter(cat => { return cat.id === passedInCatId })[0] //new
     console.log("catinfo: cat object =", cat);
-
+const wait =()=> {
+    for (let i=0; i<100000000;i++){}
+}
+const handlebuy=()=>{
+ handleAddToCart(cat,cat.name,cat.price)
+ navigate("/")
+    
+}
+     if (cat===undefined || cat.named === undefined) { wait()};
     return (
         <div className="main-ct-info-wrapper">
             {/* display price and image */}
@@ -54,7 +63,7 @@ const CatInfo = ({ data,handleAddToCart,cartData }) => {
                 <img id="img" alt={cat.name} src={cat.image.url} />
                 <div className="btns">
                     <button className="btn" onClick={() => handleClick()}>Back</button>
-                    <button className="add-btn" onClick={() => handleAddToCart(cat,catName,price)}>Add to cart</button>
+                    <button className="add-btn" onClick={(cat) => handlebuy(cat)}>Add to cart</button>
                 </div>
             </div>
 

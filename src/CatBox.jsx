@@ -1,7 +1,7 @@
-import { faker } from "@faker-js/faker";
+
 
 import { useNavigate } from "react-router-dom"; //new
-import { useState } from "react";
+
 import "./style/CatBox.css";
 
 const CatBox = ({ cat, cartData, handleAddToCart }) => {
@@ -40,7 +40,7 @@ const CatBox = ({ cat, cartData, handleAddToCart }) => {
       </div>
     );
   } catch (err) {
-    console.log(err);
+    console.debug(err);
   }
 };
 

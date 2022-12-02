@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+
 import CatBox from "./CatBox.jsx";
 import "./style/CatBox.css";
 const Home = ({ data, handleAddToCart, cartData }) => {
@@ -17,6 +17,9 @@ const Home = ({ data, handleAddToCart, cartData }) => {
             />
           );
         })}
+        {data.length===0 ?   
+         <h1> sorry no cats left</h1>
+        :null}
       </div>
     </>
   );
